@@ -4,7 +4,7 @@
 
 body {
   background-image: linear-gradient(rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0.2)),
-    url("../public/backgroundImage.jpg");
+    url("https://images.unsplash.com/photo-1566305977571-5666677c6e98?q=80&w=1890&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D");
   background-repeat: no-repeat;
   background-size: cover;
   background-position: center;
@@ -23,9 +23,9 @@ body {
 .skeleton {
   background: linear-gradient(
     to right,
-    #979494 0%,  /* Start color */
-    #828080 50%, /* Mid color */
-    #878484 100% /* End color */
+    #979494 0%,
+    /* Start color */ #828080 50%,
+    /* Mid color */ #878484 100% /* End color */
   );
   background-size: 200% 100%;
   animation: shimmer 1.5s infinite;
@@ -35,17 +35,17 @@ body {
 .skeleton-light {
   background: linear-gradient(
     to right,
-    #747272 0%,  /* Light start color */
-    #918f8f 50%, /* Light mid color */
-    #818181 100% /* Light end color */
+    #747272 0%,
+    /* Light start color */ #918f8f 50%,
+    /* Light mid color */ #818181 100% /* Light end color */
   );
 }
 
 .skeleton-dark {
   background: linear-gradient(
     to right,
-    #2d2d2d 0%,  /* Dark start color */
-    #4b4b4b 50%, /* Dark mid color */
-    #2d2d2d 100% /* Dark end color */
+    #2d2d2d 0%,
+    /* Dark start color */ #4b4b4b 50%,
+    /* Dark mid color */ #2d2d2d 100% /* Dark end color */
   );
 }
