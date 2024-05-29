@@ -1,0 +1,51 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+body {
+  background-image: linear-gradient(rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0.2)),
+    url("../public/backgroundImage.jpg");
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+}
+/* Define the shimmer animation */
+@keyframes shimmer {
+  0% {
+    background-position: -200px 0;
+  }
+  100% {
+    background-position: 200px 0;
+  }
+}
+
+/* Define the skeleton class with custom colors */
+.skeleton {
+  background: linear-gradient(
+    to right,
+    #979494 0%,  /* Start color */
+    #828080 50%, /* Mid color */
+    #878484 100% /* End color */
+  );
+  background-size: 200% 100%;
+  animation: shimmer 1.5s infinite;
+}
+
+/* Optional: define other custom color variants */
+.skeleton-light {
+  background: linear-gradient(
+    to right,
+    #747272 0%,  /* Light start color */
+    #918f8f 50%, /* Light mid color */
+    #818181 100% /* Light end color */
+  );
+}
+
+.skeleton-dark {
+  background: linear-gradient(
+    to right,
+    #2d2d2d 0%,  /* Dark start color */
+    #4b4b4b 50%, /* Dark mid color */
+    #2d2d2d 100% /* Dark end color */
+  );
+}
