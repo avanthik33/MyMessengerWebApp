@@ -1,7 +1,6 @@
 import React, { useEffect } from "react";
 import useConversation from "../zustand/useConversation";
 import NoSelectedChat from "./NoSelectedChat";
-import useSendMessage from "../Hooks/useSendMessage";
 import MessageInput from "./MessageInput";
 import Messages from "./Messages";
 

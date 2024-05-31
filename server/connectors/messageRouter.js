@@ -2,6 +2,7 @@ const express = require("express");
 const protectRoute = require("../middleware/protectRoute");
 const conversationModel = require("../models/conversationModel");
 const messageModel = require("../models/messageModel");
+const { getReciverSocketId, io } = require("../socket/socket");
 
 const router = express.Router();
 
@@ -33,6 +34,11 @@ router.post("/send/:id", protectRoute, async (req, res) => {
 
     conversation.messages.push(newMessage._id);
     await conversation.save();
+
+    const reciverSocketId = getReciverSocketId(receiverId);
+    if (reciverSocketId) {
+      io.to(reciverSocketId).emit("newMessage", newMessage);
+    }
 
     return res.status(201).json({
       status: "success",

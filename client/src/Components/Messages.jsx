@@ -3,9 +3,11 @@ import useGetMessages from "../Hooks/useGetMessages";
 import useConversation from "../zustand/useConversation";
 import Message from "./Message";
 import MessageSkelton from "./Skeltons/MessageSkelton";
+import useListenMessages from "../Hooks/useListenMessages";
 
 const Messages = () => {
   const { loading, data } = useGetMessages();
+  useListenMessages();
   const { selectedConversation, messages, setMessages } = useConversation();
   const lastMessage = useRef();
 
