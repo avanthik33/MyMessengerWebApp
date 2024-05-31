@@ -81,7 +81,9 @@ const SignUp = () => {
               onChange={handleInput}
               name="firstName"
               value={input.firstName}
+              autoComplete="new-password" // Disable auto-suggestions
             />
+
             <label className="label p-2">
               <span className="text-base label-text">Last Name</span>
             </label>
@@ -92,7 +94,9 @@ const SignUp = () => {
               onChange={handleInput}
               name="lastName"
               value={input.lastName}
+              autoComplete="new-password" // Disable auto-suggestions
             />
+
             <label className="label p-2">
               <span className="text-base label-text">Email</span>
             </label>
@@ -104,6 +108,7 @@ const SignUp = () => {
               name="email"
               value={input.email}
               onClick={handleShowButton}
+              autoComplete="new-password" // Disable auto-suggestions
             />
             {showButton && (
               <>

@@ -20,8 +20,12 @@ const Conversation = ({ conversation }) => {
   return (
     <>
       <div
-        className={`flex gap-2 items-center hover:bg-sky-300 rounded p-2 py-1 cursor-pointer
-          ${isSelected ? "bg-green-400" : ""}
+        className={`flex gap-2 items-center hover:glass  rounded p-2 py-1 cursor-pointer
+          ${
+            isSelected
+              ? "bg-white bg-opacity-30 backdrop-filter backdrop-blur-lg border border-white border-opacity-30"
+              : ""
+          }
         `}
         onClick={() => setSelectedConversation(conversation)}
       >

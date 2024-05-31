@@ -13,24 +13,26 @@ export const SocketContextProvider = ({ children }) => {
   const userId = sessionStorage.getItem("userId");
 
   useEffect(() => {
+    let socket;
     if (userId) {
-      const newSocket = io("http://localhost:5000", {
-        query: {
-          userId: userId,
-        },
+      socket = io("http://localhost:5000", {
+        query: { userId: userId },
       });
-      setSocket(newSocket);
-      newSocket.on("getOnlineUsers", (user) => {
-        setOnlineUsers(user);
+
+      setSocket(socket);
+
+      socket.on("getOnlineUsers", (users) => {
+        setOnlineUsers(users);
       });
+
+      socket.on("connect_error", (error) => {
+        console.error("Socket connection error:", error);
+      });
+
       return () => {
-        newSocket.close();
-      };
-    } else {
-      if (socket) {
         socket.close();
         setSocket(null);
-      }
+      };
     }
   }, [userId]);
 

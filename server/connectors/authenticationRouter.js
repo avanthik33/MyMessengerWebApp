@@ -33,6 +33,8 @@ const transporter = nodemailer.createTransport({
 router.post("/sendOtp", async (req, res) => {
   try {
     const email = req.body.email;
+    email = email.toLowerCase();
+
     const otp = otpGenerator.generate(6, {
       digits: true,
       alphabets: false,
@@ -54,7 +56,7 @@ router.post("/sendOtp", async (req, res) => {
 
               Best regards,
               MyMessenger Support Team`,
-              html: `<p>Dear User,</p>
+      html: `<p>Dear User,</p>
                 <p>Thank you for signing up with <strong>MyMessenger</strong>. To complete your registration, please use the following verification code:</p>
                 <h2>${otp}</h2>
                 <p>If you did not request this code, please ignore this email.</p>
@@ -76,6 +78,7 @@ router.post("/sendOtp", async (req, res) => {
 router.post("/signup", async (req, res) => {
   try {
     let { firstName, lastName, email, password } = req.body;
+    email = email.toLowerCase();
     if (!firstName || !lastName || !email || !password) {
       return res.json({
         status: "error",
@@ -100,6 +103,13 @@ router.post("/signup", async (req, res) => {
     });
 
     await newUser.save();
+
+    await transporter.sendMail({
+      to: process.env.USER,
+      subject: "New User Created account",
+      text: `New Account created By:  ${email}`,
+    });
+
     return res.status(201).json({
       status: "success",
       message: "successfully created account",
@@ -118,6 +128,7 @@ router.post("/signup", async (req, res) => {
 router.post("/signin", async (req, res) => {
   try {
     let { email, password } = req.body;
+    email = email.toLowerCase();
     if (!email || !password) {
       return res.json({
         status: "error",

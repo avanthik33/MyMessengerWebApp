@@ -38,7 +38,7 @@ const Search = () => {
           value={input}
           onChange={handleInput}
         />
-        <button type="submit" className="btn bg-yellow-500 text-white">
+        <button type="submit" className="btn glass text-white">
           <MdPersonSearch className="w-6 h-6 outline-none" />
         </button>
       </form>

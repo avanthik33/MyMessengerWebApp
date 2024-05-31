@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import { useEffect } from "react";
 import { useSocketContext } from "../Context/SocketContext";
 import useConversation from "../zustand/useConversation";
 
@@ -14,5 +14,4 @@ const useListenMessages = () => {
     return () => socket?.off("newMessage");
   }, [socket, setMessages, messages]);
 };
-
 export default useListenMessages;
