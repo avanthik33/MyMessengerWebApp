@@ -32,8 +32,15 @@ const transporter = nodemailer.createTransport({
 //send otp
 router.post("/sendOtp", async (req, res) => {
   try {
-    const email = req.body.email;
-    email = email.toLowerCase();
+    let email = req.body.email;
+    if (email) {
+      email = email.toLowerCase();
+    } else {
+      return res.json({
+        status: "error",
+        message: "no input email found",
+      });
+    }
 
     const otp = otpGenerator.generate(6, {
       digits: true,
