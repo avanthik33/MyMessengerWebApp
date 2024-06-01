@@ -1,12 +1,13 @@
 import useConversation from "../zustand/useConversation";
 import Avatar from "@mui/material/Avatar";
 import { format } from "date-fns";
-
+import { useAuthContext } from "../Context/AuthContext";
 
 const Message = ({ message }) => {
   const { selectedConversation } = useConversation();
-  const userId = sessionStorage.getItem("userId");
-  const fromMe = message.sender_id === userId;
+  const { authUser } = useAuthContext();
+  const fromMe = message.sender_id === authUser._id;
+
   const chatClassName = fromMe ? "chat-end" : "chat-start";
   const bubbleColor = fromMe ? "bg-green-700" : "bg-";
 

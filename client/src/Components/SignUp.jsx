@@ -81,7 +81,9 @@ const SignUp = () => {
               onChange={handleInput}
               name="firstName"
               value={input.firstName}
+              autoComplete="new-password" // Disable auto-suggestions
             />
+
             <label className="label p-2">
               <span className="text-base label-text">Last Name</span>
             </label>
@@ -92,19 +94,26 @@ const SignUp = () => {
               onChange={handleInput}
               name="lastName"
               value={input.lastName}
+              autoComplete="new-password" // Disable auto-suggestions
             />
-            <label className="label p-2">
-              <span className="text-base label-text">Email</span>
-            </label>
-            <input
-              type="email"
-              placeholder="example@gmail.com"
-              className="input input-bordered input-primary w-full max-w-xs"
-              onChange={handleInput}
-              name="email"
-              value={input.email}
-              onClick={handleShowButton}
-            />
+
+            {!verified && (
+              <>
+                <label className="label p-2">
+                  <span className="text-base label-text">Email</span>
+                </label>
+                <input
+                  type="email"
+                  placeholder="example@gmail.com"
+                  className="input input-bordered input-primary w-full max-w-xs"
+                  onChange={handleInput}
+                  name="email"
+                  value={input.email}
+                  onClick={handleShowButton}
+                  autoComplete="new-password" // Disable auto-suggestions
+                />
+              </>
+            )}
             {showButton && (
               <>
                 {!verified && (

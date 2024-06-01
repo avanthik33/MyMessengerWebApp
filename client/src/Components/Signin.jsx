@@ -42,6 +42,7 @@ const Signin = () => {
               onChange={handleInput}
               name="email"
               value={input.email}
+              autoComplete="new-password"
             />
             <label className="label p-2">
               <span className="text-base label-text">Password</span>
