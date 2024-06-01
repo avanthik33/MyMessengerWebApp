@@ -12,7 +12,7 @@ const useSendMessage = () => {
     try {
       await axios
         .post(
-          `http://localhost:5000/api/message/send/${selectedConversation._id}`,
+          `https://mymessengerwebapp.onrender.com/api/message/send/${selectedConversation._id}`,
           { message },
           { headers: { token: sessionStorage.getItem("token") } }
         )

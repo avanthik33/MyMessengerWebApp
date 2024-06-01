@@ -10,7 +10,9 @@ const useVerifyOtp = () => {
     setOtpLoading(true);
     try {
       await axios
-        .post("http://localhost:5000/api/auth/sendOtp", { email })
+        .post("https://mymessengerwebapp.onrender.com/api/auth/sendOtp", {
+          email,
+        })
         .then((res) => {
           setOtp(res.data.otp);
           toast.success(

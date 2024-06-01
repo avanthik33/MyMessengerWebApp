@@ -9,7 +9,7 @@ const useGetConversations = () => {
     setLoading(true);
     try {
       axios
-        .get("http://localhost:5000/api/user/viewAll", {
+        .get("https://mymessengerwebapp.onrender.com/api/user/viewAll", {
           headers: { token: sessionStorage.getItem("token") },
         })
         .then((res) => {

@@ -12,7 +12,7 @@ const useGetMessages = () => {
       try {
         await axios
           .get(
-            `http://localhost:5000/api/message/${selectedConversation._id}`,
+            `https://mymessengerwebapp.onrender.com/api/message/${selectedConversation._id}`,
             {
               headers: { token: sessionStorage.getItem("token") },
             }

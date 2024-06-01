@@ -17,7 +17,10 @@ const useSingIn = () => {
     setLoading(true);
     try {
       await axios
-        .post("http://localhost:5000/api/auth/signin", { email, password })
+        .post("https://mymessengerwebapp.onrender.com/api/auth/signin", {
+          email,
+          password,
+        })
         .then((res) => {
           if (res.data.message === "user authenticated") {
             sessionStorage.setItem("token", res.data.token);
