@@ -6,7 +6,6 @@ import { useAuthContext } from "../Context/AuthContext";
 const Message = ({ message }) => {
   const { selectedConversation } = useConversation();
   const { authUser } = useAuthContext();
-  console.log("message from message : ",message);
   const fromMe = message.sender_id === authUser._id;
 
   const chatClassName = fromMe ? "chat-end" : "chat-start";
