@@ -2,23 +2,17 @@ const express = require("express");
 const cors = require("cors");
 const mongoose = require("mongoose");
 const dotenv = require("dotenv");
-const socketIo = require("socket.io");
-const http = require("http");
 
 const authenticationRouter = require("./connectors/authenticationRouter");
 const messageRouter = require("./connectors/messageRouter");
 const conversationRouter = require("./connectors/conversationRouter");
 const userRouter = require("./connectors/userRouter");
+const { app, server } = require("./socket/socket");
 
 dotenv.config();
 
-const app = express();
 app.use(express.json());
 app.use(cors());
-
-//create http server
-const server = http.createServer(app);
-const io = socketIo(server);
 
 const MONGODB_URI = process.env.MONGODB_URI;
 

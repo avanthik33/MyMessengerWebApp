@@ -25,11 +25,12 @@ const MessageInput = () => {
       <div className="w-full relative">
         <input
           type="text"
-          className="border text-sm rounded-lg block w-full p-2.5 text-white bg-gray-800 border-gray-400"
+          className="border text-sm rounded-lg block w-full p-2.5 h-14 text-white bg-gray-800 border-gray-400"
           placeholder="Message"
           value={message}
           name="message"
           onChange={handleInput}
+          autoComplete="off"
         />
         <button
           type="submit"
@@ -38,7 +39,7 @@ const MessageInput = () => {
           {loading ? (
             <div className="loading loading-spinner"></div>
           ) : (
-            <IoSend className="text-white" />
+            <IoSend className="text-white text-xl" />
           )}
         </button>
       </div>

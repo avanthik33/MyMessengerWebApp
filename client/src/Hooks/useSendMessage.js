@@ -1,5 +1,5 @@
 import axios from "axios";
-import React, { useState } from "react";
+import { useState } from "react";
 import useConversation from "../zustand/useConversation";
 import toast from "react-hot-toast";
 
@@ -20,7 +20,7 @@ const useSendMessage = () => {
           if (res.data.status === "error") {
             toast.error(res.data.message);
           }
-          setMessages(...messages, res.data.data?.message);
+          setMessages([...messages, res.data.data]);
         });
     } catch (error) {
       console.log(error.message);
