@@ -1,5 +1,6 @@
 import React, { createContext, useContext, useEffect, useState } from "react";
 import io from "socket.io-client";
+import { useAuthContext } from "./AuthContext";
 
 const SocketContext = createContext();
 
@@ -10,31 +11,33 @@ export const useSocketContext = () => {
 export const SocketContextProvider = ({ children }) => {
   const [socket, setSocket] = useState(null);
   const [onlineUsers, setOnlineUsers] = useState([]);
-  const userId = sessionStorage.getItem("userId");
+  const { authUser } = useAuthContext();
 
   useEffect(() => {
-    let socket;
-    if (userId) {
-      socket = io("http://localhost:5000", {
-        query: { userId: userId },
+    if (authUser) {
+      const socket = io("http://localhost:5000", {
+        query: {
+          userId: authUser._id,
+        },
       });
 
       setSocket(socket);
+      socket.emit("join", authUser._id);
 
       socket.on("getOnlineUsers", (users) => {
         setOnlineUsers(users);
       });
 
-      socket.on("connect_error", (error) => {
-        console.error("Socket connection error:", error);
-      });
-
       return () => {
         socket.close();
-        setSocket(null);
       };
+    } else {
+      if (socket) {
+        socket.close();
+        setSocket(null);
+      }
     }
-  }, [userId]);
+  }, [authUser]);
 
   return (
     <SocketContext.Provider value={{ socket, onlineUsers }}>

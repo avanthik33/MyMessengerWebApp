@@ -6,16 +6,9 @@ const Conversation = ({ conversation }) => {
   const { selectedConversation, setSelectedConversation } = useConversation();
   const isSelected = selectedConversation?._id === conversation._id;
   const { onlineUsers } = useSocketContext();
-  const [onlineUsersSet, setOnlineUsersSet] = useState(new Set(onlineUsers));
-  const [isOnline, setIsOnline] = useState(false);
-
-  useEffect(() => {
-    setOnlineUsersSet(new Set(onlineUsers));
-  }, [onlineUsers]);
-
-  useEffect(() => {
-    setIsOnline(onlineUsersSet.has(conversation._id));
-  }, [conversation._id, onlineUsersSet]);
+  console.log("online users",onlineUsers);
+  const isOnline = onlineUsers.includes(conversation._id);
+  console.log("is online", isOnline);
 
   return (
     <>
